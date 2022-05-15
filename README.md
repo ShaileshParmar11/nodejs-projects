@@ -10,7 +10,7 @@ This repo contains all the nodejs practice project
 <li>NodeJs</li>
 <li>Express</li>
 <li>MongoDB</li>
-<li>Mongoos</li>
+<li>MongooseJs</li>
 <li>Bootstrap</li>
 <li>EJS</li>
 </ul>
