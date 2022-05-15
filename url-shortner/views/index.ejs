@@ -28,7 +28,7 @@
         />
         <button type="submit" class="btn btn-success">Shrink</button>
       </form>
-      <table class="table table-responsive table-striped">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Full URL</th>
@@ -37,7 +37,7 @@
           </tr>
         </thead>
         <tbody>
-          <% shortUrls.forEach((shortUrl) => { %>
+          <% if(shortUrls.length > 0){ shortUrls.forEach((shortUrl) => { %>
           <tr>
             <td>
               <a href="<%= shortUrl.full %>" target="_blank"
@@ -51,7 +51,11 @@
             </td>
             <td><%= shortUrl.clicks %></td>
           </tr>
-          <% }) %>
+          <% })} else { %>
+          <tr>
+            <td colspan="3" class="text-center">No Data Available</td>
+          </tr>
+          <% } %>
         </tbody>
       </table>
     </div>
