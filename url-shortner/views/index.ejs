@@ -34,26 +34,36 @@
             <th>Full URL</th>
             <th>Short URL</th>
             <th>Clicks</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <% if(shortUrls.length > 0){ shortUrls.forEach((shortUrl) => { %>
           <tr>
-            <td>
+            <td class="align-middle">
               <a href="<%= shortUrl.full %>" target="_blank"
                 ><%= shortUrl.full %></a
               >
             </td>
-            <td>
+            <td class="align-middle">
               <a href="<%= shortUrl.short %>" target="_blank"
                 ><%= shortUrl.short %></a
               >
             </td>
-            <td><%= shortUrl.clicks %></td>
+            <td class="align-middle"><%= shortUrl.clicks %></td>
+            <td class="align-middle">
+              <form
+                action="/delete/<%= shortUrl.short %>?_method=DELETE"
+                method="post"
+                async="true"
+              >
+                <button class="btn btn-danger">Delete</button>
+              </form>
+            </td>
           </tr>
           <% })} else { %>
           <tr>
-            <td colspan="3" class="text-center">No Data Available</td>
+            <td colspan="4" class="text-center">No Data Available</td>
           </tr>
           <% } %>
         </tbody>

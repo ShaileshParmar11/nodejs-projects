@@ -1,6 +1,7 @@
 const express = require("express");
 const ShortUrl = require("./modles/shortUrl");
 const mongoose = require("mongoose");
+var methodOverride = require("method-override");
 
 const app = express();
 mongoose.connect("mongodb://localhost/urlShortener", {
@@ -10,6 +11,8 @@ mongoose.connect("mongodb://localhost/urlShortener", {
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
+// override with POST having ?_method=DELETE
+app.use(methodOverride("_method"));
 
 const port = process.env.PORT || 8080;
 
@@ -37,6 +40,18 @@ app.get("/:shortUrl", async (req, res) => {
   shortUrl.save();
 
   res.redirect(shortUrl.full);
+});
+
+app.delete("/delete/:shortUrl", async (req, res) => {
+  const shortUrl = await ShortUrl.findOneAndDelete({
+    short: req.params.shortUrl,
+  });
+
+  if (shortUrl == null) {
+    return res.sendStatus(404);
+  }
+
+  res.redirect("/");
 });
 
 app.listen(port, () => {
