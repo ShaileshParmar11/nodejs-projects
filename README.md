@@ -22,3 +22,12 @@ This repo contains all the nodejs practice project
 3. `yarn start` or `yarn devStart`
 
 note:- You must have [mongodb](https://www.mongodb.com/docs/guides/server/install/) running in your local matchine!
+
+## **Pagination**
+
+In this project i have implemented pagination to 2 API through nodejs
+
+## **API**
+
+`http://localhost:3000/products?page=1&limit=10`
+`http://localhost:3000/users?page=1&limit=10`
